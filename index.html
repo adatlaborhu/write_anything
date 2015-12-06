@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<!-- saved from url=(0059)file:///Users/tomimester/Google%20Drive/TYPEANYTHING/1.html -->
+<html><head>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans&subset=latin,latin-ext,greek,greek-ext,cyrillic,vietnamese,cyrillic-ext' rel='stylesheet' type='text/css'>
+
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+
+<meta property="og:image" content="1.png" />
+<meta property="og:title" content="Write here anything" />
+<meta property="og:description" content="This is a test. Everyone can write anything here. Everyone will see it. Once you hit ENTER, you can not delete it. This is the content so far. Please avoid rude things!" />
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-71071642-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+  <style>
+  h1   {font-family: 'Open Sans', sans-serif; background-color: yellow;}
+  .resizedTextbox {width: 100%; height: 30px; border: 0px solid; outline: 0; font-size: 20px; font-family: 'Open Sans', sans-serif;}
+  </style>
+<title>Write here anything</title>
+
+<script type="text/javascript">
+      function handleClick() {
+	var hr = new XMLHttpRequest();
+	var url = "my_parse_file.php";
+	var fn = document.getElementById("newstuff").value;
+	var vars = "firstname="+fn;
+	hr.open("POST", url, true);
+	hr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+	hr.onreadystatechange = function() {
+        if(hr.readyState == 4 && hr.status == 200) {
+	    var return_data = hr.responseText;
+	    document.getElementById("textlog").innerHTML = return_data;
+	    }
+	    }
+
+	hr.send(vars);
+
+	document.getElementById("newstuff").value = "";
+		}
+
+function loadDoc() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (xhttp.readyState == 4 && xhttp.status == 200) {
+      document.getElementById("textlog").innerHTML = xhttp.responseText;
+    }
+  };
+  xhttp.open("GET", "updater.php", true);
+  xhttp.send();
+}
+
+    function fire() {
+	if (event.keyCode == 13) { handleClick(); return false } else { loadDoc(); return false }
+    }
+</script>
+
+</head>
+
+
+<body>
+<script>
+setInterval(function loadDoc() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (xhttp.readyState == 4 && xhttp.status == 200) {
+      document.getElementById("textlog").innerHTML = xhttp.responseText;
+    }
+  };
+  xhttp.open("GET", "updater.php", true);
+  xhttp.send();
+}, 500);
+</script>
+
+<h1>This is a test. Everyone can write anything here. Everyone will see it. Once you hit ENTER, you can not delete it. This is the content so far. Please avoid rude things!</h1>
+
+<a id="textlog" class="resizedTextbox"> </a>
+<form>
+<input id="newstuff" autocomplete="off" autofocus="autofocus" maxlength="100" type="text" class="resizedTextbox" onkeydown="if (event.keyCode == 13) { handleClick(); return false }">
+</form>
+
+
+</body></html>
