@@ -21,8 +21,11 @@
 </script>
 
   <style>
+  html {height: 90%}
+  body {height: 100%;}
   h1   {font-family: 'Open Sans', sans-serif; background-color: yellow;}
   .resizedTextbox {width: 100%; height: 30px; border: 0px solid; outline: 0; font-size: 20px; font-family: 'Open Sans', sans-serif;}
+  .justTextbox {width: 100%; border: 0px solid; outline: 0; font-size: 20px; font-family: 'Open Sans', sans-serif;}
   </style>
 <title>Write here anything</title>
 
@@ -63,10 +66,13 @@ function loadDoc() {
     }
 </script>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
 </head>
 
-
 <body>
+
+
 <script>
 setInterval(function loadDoc() {
   var xhttp = new XMLHttpRequest();
@@ -80,12 +86,28 @@ setInterval(function loadDoc() {
 }, 500);
 </script>
 
+<script>
+$(document).ready(function(){
+  $('#scroller').animate({
+  scrollTop: $('#scroller').get(0).scrollHeight*10}, 2000);
+});
+</script>
+
+
 <h1>This is a test. Everyone can write anything here. Everyone will see it. Once you hit ENTER, you can not delete it. This is the content so far. Please avoid rude things!</h1>
 
-<a id="textlog" class="resizedTextbox"> </a>
-<form>
-<input id="newstuff" autocomplete="off" autofocus="autofocus" maxlength="100" type="text" class="resizedTextbox" onkeydown="if (event.keyCode == 13) { handleClick(); return false }">
-</form>
+<div id="scroller" style="height:50%; overflow: scroll; -webkit-mask-image: -webkit-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,1) 10%);"><br><br>
+    <div id="textlog" class="justTextbox"> </div>
+    <div id="bottom" style="position: inherit"><br><br><br><br><br><br></div>
+</div>
 
+<form id="acucc" class="resizedTextbox">
+<p></p>
+<span STYLE="background-color:#00eaff">Type here:</span>
+<input id="newstuff" autocomplete="off" autofocus="autofocus" maxlength="100" type="text" class="resizedTextbox" onkeydown="if (event.keyCode == 13) { handleClick(); return false }">
+
+<div id="thanks" class="justTextbox">
+</div>
+</form>
 
 </body></html>
