@@ -25,6 +25,7 @@
   body {height: 100%;}
   h1   {font-family: 'Open Sans', sans-serif; background-color: yellow;}
   .resizedTextbox {width: 100%; height: 30px; border: 0px solid; outline: 0; font-size: 20px; font-family: 'Open Sans', sans-serif;}
+  .thanksTextbox {width: 100%; height: 30px; border: 0px solid; outline: 0; font-size: 20px; font-family: 'Open Sans', sans-serif;}
   .justTextbox {width: 100%; border: 0px solid; outline: 0; font-size: 20px; font-family: 'Open Sans', sans-serif;}
   </style>
 <title>Write here anything</title>
@@ -48,7 +49,13 @@
 	hr.send(vars);
 
 	document.getElementById("newstuff").value = "";
-		}
+	document.getElementById("thanks").innerHTML = "<span STYLE='background-color:#ff8787'>Thanks! You can add more text above, if you want. If you want to hear about the results of this experiment, enter your e-mail adress below and we will let you know. (No spam, promise.) If you did this before, please ignore.</span><br><input placeholder='writehere@youremailaddre.ss' class='thanksTextbox' onkeydown='if (event.keyCode == 13) { thanks(); return false }'>";
+	}
+
+function thanks() {
+	document.getElementById("thanks").innerHTML = "<p>hello</p>";
+	aaa = 1;
+	}
 
 function loadDoc() {
   var xhttp = new XMLHttpRequest();
@@ -61,9 +68,6 @@ function loadDoc() {
   xhttp.send();
 }
 
-    function fire() {
-	if (event.keyCode == 13) { handleClick(); return false } else { loadDoc(); return false }
-    }
 </script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
