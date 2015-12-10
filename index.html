@@ -49,12 +49,20 @@
 	hr.send(vars);
 
 	document.getElementById("newstuff").value = "";
-	document.getElementById("thanks").innerHTML = "<span STYLE='background-color:#ff8787'>Thanks! You can add more text above, if you want. If you want to hear about the results of this experiment, enter your e-mail adress below and we will let you know. (No spam, promise.) If you did this before, please ignore.</span><br><input placeholder='writehere@youremailaddre.ss' class='thanksTextbox' onkeydown='if (event.keyCode == 13) { thanks(); return false }'>";
-	}
+	document.getElementById("thanks").innerHTML = "<span STYLE='background-color:#ff8787'>Thanks! You can add more text above, if you want. If you want to hear about the results of this experiment, enter your e-mail adress below and we will let you know. (No spam, promise.) If you did this before, please ignore.</span><br><input id='hellobello' placeholder='writehere@youremailaddre.ss' class='thanksTextbox' onkeydown='if (event.keyCode == 13) { thanks(); return false }'>";
+	if (aaa == 1) {document.getElementById("thanks").innerHTML = "<span STYLE='background-color:#ff8787'>Thanks, we saved your e-mail address! You don't need to enter it anymore. (Even if we ask for it accidentally.)</span>"};
+}
 
 function thanks() {
-	document.getElementById("thanks").innerHTML = "<p>hello</p>";
+	var hr = new XMLHttpRequest();
+	var url = "email.php";
+	var hellobello = document.getElementById("hellobello").value;
+	var vars = "xxxxx="+hellobello;
+	hr.open("POST", url, true);
+	hr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	hr.send(vars);
 	aaa = 1;
+	document.getElementById("thanks").innerHTML = "<span STYLE='background-color:#ff8787'>Thanks, we saved your e-mail address! You don't need to enter it anymore. (Even if we ask for it accidentally.)</span>";
 	}
 
 function loadDoc() {
